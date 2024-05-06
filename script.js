@@ -1,63 +1,124 @@
 const questions = [
     {
-        question: "Manakah dari berikut yang bukan termasuk dalam jenis analisis data?",
+        question: "Apa dampak sosial utama dari penemuan komputer pada abad ke-20?",
         answers: [
-            { text: "Analisis Deskriptif", correct: false },
-            { text: "Analisis Regresi", correct: false },
-            { text: "Analisis Sintetis", correct: true },
-            { text: "Analisis Sentimen", correct: false },
-            { text: "Analisis Cluster", correct: false },
+            { text: "Perubahan pola ekonomi", correct: false },
+            { text: "Perkembangan industri otomotif", correct: false },
+            { text: "Transformasi dalam pendidikan dan pekerjaan", correct: true },
+            { text: "Penurunan minat dalam seni dan budaya", correct: false },
+            { text: "Peningkatan penggunaan obat-obatan terlarang", correct: false },
         ],
     },
 
     {
-        question: "Teknik apa yang digunakan untuk mengidentifikasi pola dalam data dan mengelompokkannya berdasarkan karakteristik tertentu?",
+        question: "Peristiwa apa yang menandai awal era komputer pribadi dan dampaknya terhadap masyarakat?",
         answers: [
-            { text: "Regresi", correct: false },
-            { text: "Clustering", correct: true },
-            { text: "Sentimen", correct: false },
-            { text: "Association", correct: false },
-            { text: "Descriptive", correct: false },
+            { text: "Penemuan transistor", correct: false },
+            { text: "Peluncuran komputer Apple II", correct: true },
+            { text: "Pembuatan Internet", correct: false },
+            { text: "Terbitnya buku War Games", correct: false },
+            { text: "Pembentukan Perserikatan Bangsa-Bangsa", correct: false },
         ],
     },
     {
-        question: "Explain the term 'Responsive Design' in web development.",
+        question: "Bagaimana peran komputer dalam Revolusi Industri 4.0 mempengaruhi lapangan pekerjaan dan sosial?",
         answers: [
-            { text: "Designing for all devices", correct: true },
-            { text: "Designing only for desktop", correct: false },
-            { text: "Designing for print media", correct: false },
-            { text: "Designing for audio devices", correct: false },
-        ],
-    },
-
-    {
-        question: "What is the purpose of the 'alt' attribute in HTML?",
-        answers: [
-            { text: "Alternative text for images", correct: true },
-            { text: "Alignment of text", correct: false },
-            { text: "Attribute list", correct: false },
-            { text: "Animation control", correct: false },
+            { text: "Peningkatan ketergantungan pada teknologi", correct: true },
+            { text: "Peningkatan permintaan pekerja manual", correct: false },
+            { text: "Penurunan angka pengangguran", correct: false },
+            { text: "Kehilangan minat dalam pendidikan tinggi", correct: false },
+            { text: "Meningkatnya pertumbuhan populasi dunia", correct: false },
         ],
     },
 
     {
-        question: "Apa yang dimaksud dengan ETL dalam analisis data?",
+        question: "Komputer ENIAC, yang dibangun pada tahun 1940-an, memiliki dampak sosial besar karena:",
         answers: [
-            { text: "Extract, Transfer, Load", correct: false },
-            { text: "Extract, Transform, Load", correct: true },
-            { text: "Evaluate, Transform, Load", correct: false },
-            { text: "Extract, Translate, Load", correct: false },
-            { text: "Extract, Transmit, Load", correct: false },
+            { text: "Memperluas kesenjangan gender di bidang teknologi", correct: true },
+            { text: "Mempercepat pertumbuhan ekonomi global", correct: false },
+            { text: "Mendorong penemuan roket antariksa", correct: false },
+            { text: "Membantu dalam perawatan kesehatan masyarakat", correct: false },
+            { text: "Menyebabkan kemunduran dalam perkembangan transportasi", correct: false },
         ],
     },
 
     {
-        question: "Define 'API' in the context of web development.",
+        question: "Perkembangan komputer pribadi seperti IBM PC pada tahun 1980-an memberikan akses kepada masyarakat untuk:",
         answers: [
-            { text: "Automated Programming Interface", correct: false },
-            { text: "Application Programming Interface", correct: true },
-            { text: "Advanced Protocol Interface", correct: false },
-            { text: "Automated Protocol Integration", correct: false },
+            { text: "Terhubung dengan antariksa", correct: false },
+            { text: "Mengakses informasi dan komunikasi pribadi", correct: true },
+            { text: "Menjalankan bisnis besar", correct: false },
+            { text: "Menjadi lebih terisolasi secara sosial", correct: false },
+            { text: "Mempertahankan gaya hidup tradisional", correct: false },
+        ],
+    },
+
+    {
+
+        question: "Apa yang dimaksud dengan hak kekayaan intelektual (HKI) dalam konteks produk informatika?",
+        answers: [
+            { text: "Hak untuk mengakses internet gratis", correct: false },
+            { text: "Hak untuk mengklaim kepemilikan atas karya kreatif", correct: true },
+            { text: "Hak untuk mengekspor perangkat lunak", correct: false },
+            { text: "Hak untuk menghapus data pribadi dari internet", correct: false },
+            { text: "Hak untuk menyalin dan mendistribusikan konten tanpa izin", correct: false },
+        ],
+    },
+
+    {
+
+        question: "Bagaimana produk informatika berkontribusi terhadap pertumbuhan ekonomi?",
+        answers: [
+            { text: "Dengan membatasi akses informasi", correct: false },
+            { text: "Dengan menciptakan lapangan kerja baru", correct: true },
+            { text: "Dengan meningkatkan biaya produksi", correct: false },
+            { text: "Dengan mengurangi investasi dalam teknologi", correct: false },
+            { text: "Dengan meningkatkan kebutuhan akan bahan bakar fosil", correct: false },
+        ],
+    },
+
+    {
+        question: " Manakah dari pernyataan berikut yang benar tentang variabel dalam pemrograman prosedural?",
+        answers: [
+            { text: "Variabel hanya dapat diinisialisasi sekali", correct: false },
+            { text: " Variabel adalah simbol yang digunakan untuk menyimpan dan memanipulasi data", correct: true },
+            { text: "Variabel harus selalu dideklarasikan sebelum digunakan", correct: false },
+            { text: "Variabel hanya dapat menyimpan satu nilai pada satu waktu", correct: false },
+            { text: "Variabel harus selalu dideklarasikan dengan tipe data yang sama", correct: false },
+        ],
+    },
+
+    {
+        question: " Manakah dari pernyataan berikut yang benar tentang variabel dalam pemrograman prosedural?",
+        answers: [
+            { text: "Variabel hanya dapat diinisialisasi sekali", correct: false },
+            { text: " Variabel adalah simbol yang digunakan untuk menyimpan dan memanipulasi data", correct: true },
+            { text: "Variabel harus selalu dideklarasikan sebelum digunakan", correct: false },
+            { text: "Variabel hanya dapat menyimpan satu nilai pada satu waktu", correct: false },
+            { text: "Variabel harus selalu dideklarasikan dengan tipe data yang sama", correct: false },
+        ],
+    },
+
+    {
+        question: " Apa yang dimaksud dengan prosedur dalam pemrograman prosedural?",
+        answers: [
+            { text: "Sebuah blok kode yang menjalankan operasi aritmatika", correct: false },
+            { text: " ebuah blok kode yang menjalankan serangkaian instruksi secara berurutan", correct: true },
+            { text: "Sebuah blok kode yang menghasilkan nilai balik", correct: false },
+            { text: "Sebuah blok kode yang memungkinkan untuk melakukan percabangan", correct: false },
+            { text: "Sebuah metode untuk membagi program menjadi modul terpisah", correct: false },
+        ],
+    },
+
+
+    {
+        question: "Manakah dari struktur pengendalian berikut yang digunakan untuk melakukan iterasi dalam pemrograman prosedural?",
+        answers: [
+            { text: "If-else", correct: false },
+            { text: " For", correct: true },
+            { text: "Switch", correct: false },
+            { text: "Try-catch", correct: false },
+            { text: "While", correct: false },
         ],
     },
 ];
@@ -149,7 +210,10 @@ nextButtonEl.addEventListener("click", function () {
     }
 });
 
-
+function resetContainer() {
+    questionEl.textContent = "";
+    answersButtons.innerHTML = "";
+}
 
 function authenticate() {
     let passwordAttempts = 3; // Menetapkan jumlah percobaan maksimum
@@ -191,8 +255,3 @@ document.addEventListener("DOMContentLoaded", function() {
     authenticate();
 });
 
-
-function resetContainer() {
-    questionEl.textContent = "";
-    answersButtons.innerHTML = "";
-}
