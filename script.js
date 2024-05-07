@@ -88,16 +88,7 @@ const questions = [
         ],
     },
 
-    {
-        question: " Manakah dari pernyataan berikut yang benar tentang variabel dalam pemrograman prosedural?",
-        answers: [
-            { text: "Variabel hanya dapat diinisialisasi sekali", correct: false },
-            { text: " Variabel adalah simbol yang digunakan untuk menyimpan dan memanipulasi data", correct: true },
-            { text: "Variabel harus selalu dideklarasikan sebelum digunakan", correct: false },
-            { text: "Variabel hanya dapat menyimpan satu nilai pada satu waktu", correct: false },
-            { text: "Variabel harus selalu dideklarasikan dengan tipe data yang sama", correct: false },
-        ],
-    },
+    
 
     {
         question: " Apa yang dimaksud dengan prosedur dalam pemrograman prosedural?",
