@@ -1,117 +1,119 @@
+//Version 1//
 const questions = [
     {
-        question: "Apa dampak sosial utama dari penemuan komputer pada abad ke-20?",
-        answers: [
-            { text: "Perubahan pola ekonomi", correct: false },
-            { text: "Perkembangan industri otomotif", correct: false },
-            { text: "Transformasi dalam pendidikan dan pekerjaan", correct: true },
-            { text: "Penurunan minat dalam seni dan budaya", correct: false },
-            { text: "Peningkatan penggunaan obat-obatan terlarang", correct: false },
-        ],
-    },
-
-    {
-        question: "Peristiwa apa yang menandai awal era komputer pribadi dan dampaknya terhadap masyarakat?",
-        answers: [
-            { text: "Penemuan transistor", correct: false },
-            { text: "Peluncuran komputer Apple II", correct: true },
-            { text: "Pembuatan Internet", correct: false },
-            { text: "Terbitnya buku War Games", correct: false },
-            { text: "Pembentukan Perserikatan Bangsa-Bangsa", correct: false },
-        ],
-    },
-    {
-        question: "Bagaimana peran komputer dalam Revolusi Industri 4.0 mempengaruhi lapangan pekerjaan dan sosial?",
-        answers: [
-            { text: "Peningkatan ketergantungan pada teknologi", correct: true },
-            { text: "Peningkatan permintaan pekerja manual", correct: false },
-            { text: "Penurunan angka pengangguran", correct: false },
-            { text: "Kehilangan minat dalam pendidikan tinggi", correct: false },
-            { text: "Meningkatnya pertumbuhan populasi dunia", correct: false },
-        ],
-    },
-
-    {
-        question: "Komputer ENIAC, yang dibangun pada tahun 1940-an, memiliki dampak sosial besar karena:",
-        answers: [
-            { text: "Memperluas kesenjangan gender di bidang teknologi", correct: true },
-            { text: "Mempercepat pertumbuhan ekonomi global", correct: false },
-            { text: "Mendorong penemuan roket antariksa", correct: false },
-            { text: "Membantu dalam perawatan kesehatan masyarakat", correct: false },
-            { text: "Menyebabkan kemunduran dalam perkembangan transportasi", correct: false },
-        ],
-    },
-
-    {
-        question: "Perkembangan komputer pribadi seperti IBM PC pada tahun 1980-an memberikan akses kepada masyarakat untuk:",
+        question: "Perkembangan komputer pribadi seperti IBM PC pada tahun 1980-an memberikan akses kepada masyarakat untuk:", //1//
         answers: [
             { text: "Terhubung dengan antariksa", correct: false },
-            { text: "Mengakses informasi dan komunikasi pribadi", correct: true },
             { text: "Menjalankan bisnis besar", correct: false },
+            { text: "Mengakses informasi dan komunikasi pribadi", correct: true },
             { text: "Menjadi lebih terisolasi secara sosial", correct: false },
             { text: "Mempertahankan gaya hidup tradisional", correct: false },
         ],
     },
 
     {
-
-        question: "Apa yang dimaksud dengan hak kekayaan intelektual (HKI) dalam konteks produk informatika?",
+        question: "Peran internet dalam komunikasi sosial ditandai oleh:", //2//
         answers: [
-            { text: "Hak untuk mengakses internet gratis", correct: false },
-            { text: "Hak untuk mengklaim kepemilikan atas karya kreatif", correct: true },
-            { text: "Hak untuk mengekspor perangkat lunak", correct: false },
-            { text: "Hak untuk menghapus data pribadi dari internet", correct: false },
-            { text: "Hak untuk menyalin dan mendistribusikan konten tanpa izin", correct: false },
+            { text: " Munculnya surat kabar cetak", correct: false },
+            { text: "Pertumbuhan media sosial dan jejaring online", correct: true },
+            { text: "Penurunan minat dalam budaya populer", correct: false },
+            { text: "Penurunan penggunaan perangkat lunak komputer", correct: false },
+            { text: "Peningkatan dalam perdagangan luar negeri", correct: false },
+        ],
+    },
+    {
+        question: "Bagaimana perkembangan komputer telah mengubah cara pendidikan disampaikan dan diterima di masyarakat?", //3//
+        answers: [
+            { text: "Mendorong pembelajaran berbasis teknologi", correct: true },
+            { text: "Mengurangi akses ke informasi", correct: false },
+            { text: "Meningkatkan ketidaksetaraan pendidikan", correct: false },
+            { text: "Menghambat kemampuan siswa untuk berkolaborasi", correct: false },
+            { text: "Meningkatkan kecenderungan plagiarisme", correct: false },
+        ],
+    },
+
+    {
+        question: "Apa dampak positif dari peningkatan aksesibilitas internet di masyarakat?",  //4//
+        answers: [
+            { text: "Peningkatan kolaborasi global", correct: true },
+            { text: "Peningkatan isolasi sosial", correct: false },
+            { text: "Penurunan keterampilan teknologi", correct: false },
+            { text: "Perubahan signifikan dalam kebiasaan makan", correct: false },
+            { text: "Penurunan minat dalam berolahraga", correct: false },
+        ],
+    },
+
+    {
+        question: "Bagaimana komputer telah mempengaruhi industri hiburan dan budaya populer?", //5//
+        answers: [
+            { text: "Mengurangi variasi dalam bentuk hiburan", correct: false },
+            { text: "Meningkatkan partisipasi dalam olahraga", correct: false },
+            { text: "Memberdayakan seniman untuk bereksperimen", correct: true },
+            { text: "Mempercepat hilangnya bahasa dan budaya lokal", correct: false },
+            { text: "Meningkatkan minat dalam pertunjukan langsung", correct: false },
         ],
     },
 
     {
 
-        question: "Bagaimana produk informatika berkontribusi terhadap pertumbuhan ekonomi?",
+        question: "Siapakah ilmuwan yang dikenal karena perannya dalam memecahkan kode Enigma Jerman selama Perang Dunia II dan kontribusinya dalam pengembangan komputer modern yang digunakan banyak orang-orang saat ini?", //6//
         answers: [
-            { text: "Dengan membatasi akses informasi", correct: false },
-            { text: "Dengan menciptakan lapangan kerja baru", correct: true },
-            { text: "Dengan meningkatkan biaya produksi", correct: false },
-            { text: "Dengan mengurangi investasi dalam teknologi", correct: false },
-            { text: "Dengan meningkatkan kebutuhan akan bahan bakar fosil", correct: false },
+            { text: "Charles Babbage", correct: false },
+            { text: "John von Neumann", correct: false },
+            { text: "Grace Hopper", correct: false },
+            { text: " Joseph Oppenheimer", correct: false },
+            { text: "Alan Turing", correct: true },
         ],
     },
 
     {
-        question: " Manakah dari pernyataan berikut yang benar tentang variabel dalam pemrograman prosedural?",
+
+        question: "Manakah dari berikut ini yang bukan dampak positif perkembangan komputer terhadap kehidupan sosial?", //7//
         answers: [
-            { text: "Variabel hanya dapat diinisialisasi sekali", correct: false },
-            { text: " Variabel adalah simbol yang digunakan untuk menyimpan dan memanipulasi data", correct: true },
-            { text: "Variabel harus selalu dideklarasikan sebelum digunakan", correct: false },
-            { text: "Variabel hanya dapat menyimpan satu nilai pada satu waktu", correct: false },
-            { text: "Variabel harus selalu dideklarasikan dengan tipe data yang sama", correct: false },
+            { text: "Meningkatkan akses informasi dan komunikasi", correct: false },
+            { text: "Mempermudah transaksi keuangan dan perdagangan ", correct: false },
+            { text: "Mempercepat proses belajar dan mengajar ", correct: false },
+            { text: "Meningkatkan keterpencilan dan isolasi sosial ", correct: true },
+            { text: "Membuka peluang kerja baru di bidang teknologi", correct: false },
         ],
     },
-
-    
 
     {
-        question: " Apa yang dimaksud dengan prosedur dalam pemrograman prosedural?",
+        question: "Bagaimana perkembangan komputer memengaruhi cara kita berinteraksi satu sama lain?", //8//
         answers: [
-            { text: "Sebuah blok kode yang menjalankan operasi aritmatika", correct: false },
-            { text: " ebuah blok kode yang menjalankan serangkaian instruksi secara berurutan", correct: true },
-            { text: "Sebuah blok kode yang menghasilkan nilai balik", correct: false },
-            { text: "Sebuah blok kode yang memungkinkan untuk melakukan percabangan", correct: false },
-            { text: "Sebuah metode untuk membagi program menjadi modul terpisah", correct: false },
+            { text: "Mengurangi interaksi tatap muka dan meningkatkan interaksi online ", correct: false },
+            { text: "Mempermudah komunikasi jarak jauh dan memperkuat hubungan antar individu ", correct: false },
+            { text: "Memicu cyberbullying dan pelecehan online ", correct: false },
+            { text: "Semua jawaban benar ", correct: false },
+            { text: " Hanya jawaban A dan B yang benar", correct: true },
+        ],
+    },
+
+   
+
+    {
+        question: " Bagaimana perkembangan komputer memengaruhi cara kita mengonsumsi informasi?", //9//
+        answers: [
+            { text: "Meningkatkan akses ke berbagai sumber informasi ", correct: false },
+            { text: " Memudahkan verifikasi kebenaran informasi ", correct: false },
+            { text: "Meningkatkan risiko penyebaran informasi palsu ", correct: false },
+            { text: "Semua jawaban benar ", correct: true },
+            { text: "Hanya jawaban A dan B yang benar", correct: false },
         ],
     },
 
 
     {
-        question: "Manakah dari struktur pengendalian berikut yang digunakan untuk melakukan iterasi dalam pemrograman prosedural?",
+        question: "Bagaimana perkembangan komputer memengaruhi cara masyarakat berbelanja?", //10//
         answers: [
-            { text: "If-else", correct: false },
-            { text: " For", correct: true },
-            { text: "Switch", correct: false },
-            { text: "Try-catch", correct: false },
-            { text: "While", correct: false },
+            { text: "Mempermudah perbandingan harga dan produk ", correct: false },
+            { text: "Semua jawaban benar ", correct: true },
+            { text: "Munculnya e-commerce dan platform belanja online ", correct: false },
+            { text: " Meningkatkan risiko penipuan online ", correct: false },
+            { text: "Hanya jawaban A dan B yang benar", correct: false },
         ],
     },
+
 ];
 
 let currentQuestionIndex = 0;
