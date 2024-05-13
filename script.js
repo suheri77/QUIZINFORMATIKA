@@ -210,28 +210,46 @@ function resetContainer() {
 
 function authenticate() {
     let passwordAttempts = 3; // Menetapkan jumlah percobaan maksimum
-    const delayTime = 3000; // Waktu penundaan dalam milidetik (di sini, 5000 milidetik = 5 detik)
+    const delayTime = 3000; // Waktu penundaan dalam milidetik (di sini, 3000 milidetik = 3 detik)
+    let firstPasswordEntered = false;
+    let secondPasswordEntered = false;
 
     while (passwordAttempts > 0) { // Loop selama masih ada percobaan tersisa
-        const password = prompt("Masukkan kata sandi:");
+        if (!firstPasswordEntered) {
+            const firstPassword = prompt("Masukkan kata sandi pertama:");
 
-        // Ganti 'password123' dengan kata sandi yang diinginkan
-        if (password === "bernasX.4.1") {
-            // Jika kata sandi benar, lanjutkan ke situs web
-            unlockWebsite();
-            return; // Keluar dari fungsi setelah kata sandi benar
-        } else {
-            // Jika kata sandi salah, kurangi jumlah percobaan
-            passwordAttempts--;
+            // Ganti 'password123' dengan kata sandi yang diinginkan
+            if (firstPassword === "bernasX") {
+                firstPasswordEntered = true;
+                alert("Kata sandi pertama benar. Masukkan kata sandi kedua.");
+            } else {
+                passwordAttempts--;
+                alert("Kata sandi pertama salah. Sisa percobaan: " + passwordAttempts);
 
-            // Tampilkan pesan kesalahan
-            alert("Kata sandi salah. Sisa percobaan: " + passwordAttempts);
+                if (passwordAttempts === 0) {
+                    alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
+                    setTimeout(authenticate, delayTime); // Menunggu beberapa detik sebelum memanggil kembali fungsi authenticate()
+                    return;
+                }
+            }
+        } else if (!secondPasswordEntered) {
+            const secondPassword = prompt("Masukkan kata sandi kedua:");
 
-            // Jika tidak ada percobaan tersisa, beri waktu penundaan sebelum mencoba lagi
-            if (passwordAttempts === 0) {
-                alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
-                setTimeout(authenticate, delayTime); // Menunggu beberapa detik sebelum memanggil kembali fungsi authenticate()
-                return;
+            // Ganti 'password123' dengan kata sandi yang diinginkan
+            if (secondPassword === "bernasX.4") {
+                // Jika kedua kata sandi benar, lanjutkan ke situs web
+                secondPasswordEntered = true;
+                unlockWebsite();
+                return; // Keluar dari fungsi setelah kedua kata sandi benar
+            } else {
+                passwordAttempts--;
+                alert("Kata sandi kedua salah. Sisa percobaan: " + passwordAttempts);
+
+                if (passwordAttempts === 0) {
+                    alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
+                    setTimeout(authenticate, delayTime); // Menunggu beberapa detik sebelum memanggil kembali fungsi authenticate()
+                    return;
+                }
             }
         }
     }
