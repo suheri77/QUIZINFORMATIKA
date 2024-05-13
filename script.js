@@ -216,7 +216,7 @@ function authenticate() {
         const password = prompt("Masukkan kata sandi:");
 
         // Ganti 'password123' dengan kata sandi yang diinginkan
-        if (password === "bernasX.5") {
+        if (password === "bernasX.4.1") {
             // Jika kata sandi benar, lanjutkan ke situs web
             unlockWebsite();
             return; // Keluar dari fungsi setelah kata sandi benar
