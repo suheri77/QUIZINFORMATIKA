@@ -268,6 +268,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    let isScreenshotAttempted = false;
+
+    const handleVisibilityChange = () => {
+        if (document.hidden) {
+            isScreenshotAttempted = true;
+            document.body.classList.add('screenshot-detected');
+        } else {
+            if (isScreenshotAttempted) {
+                alert('Screenshot detected!');
+                document.body.classList.remove('screenshot-detected');
+                isScreenshotAttempted = false;
+            }
+        }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    window.addEventListener('blur', () => {
+        setTimeout(() => {
+            if (!document.hasFocus()) {
+                isScreenshotAttempted = true;
+                document.body.classList.add('screenshot-detected');
+            }
+        }, 100);
+    });
+
+    window.addEventListener('focus', () => {
+        document.body.classList.remove('screenshot-detected');
+    });
+});
+
+
+
+
 
 
 
