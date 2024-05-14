@@ -255,23 +255,36 @@ function authenticate() {
     }
 }
 
-/** TO DISABLE SCREEN CAPTURE **/
-document.addEventListener('keyup', (e) => {
-    if (e.key == 'PrintScreen') {
-        navigator.clipboard.writeText('');
-        alert('Screenshots disabled!');
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    let isScreenshotAttempted = false;
+
+    const handleVisibilityChange = () => {
+        if (document.hidden) {
+            isScreenshotAttempted = true;
+            document.body.classList.add('screenshot-detected');
+        } else {
+            if (isScreenshotAttempted) {
+                alert('Screenshot detected!');
+            }
+        }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    window.addEventListener('blur', () => {
+        setTimeout(() => {
+            if (!document.hasFocus()) {
+                isScreenshotAttempted = true;
+                document.body.classList.add('screenshot-detected');
+            }
+        }, 100);
+    });
+
+    window.addEventListener('focus', () => {
+        document.body.classList.remove('screenshot-detected');
+    });
 });
 
-/** TO DISABLE PRINTS WHIT CTRL+P **/
-document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.key == 'p') {
-        alert('This section is not allowed to print or export to PDF');
-        e.cancelBubble = true;
-        e.preventDefault();
-        e.stopImmediatePropagation();
-    }
-});
 
 
 
