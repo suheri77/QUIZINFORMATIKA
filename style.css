@@ -6,7 +6,7 @@
 
 .center {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -125,7 +125,8 @@ body {
 /* Existing CSS */
 
 /* Add media queries for smartphones */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) 
+{
     .welcome-screen {
         padding: 0 20px;
     }
@@ -163,6 +164,7 @@ body {
 }
 
 
+
 body {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -178,7 +180,3 @@ body {
 .screenshot-detected .screenshot-block {
     filter: blur(10px);
 }
-
-
-
-
