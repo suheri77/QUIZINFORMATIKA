@@ -275,27 +275,46 @@ document.addEventListener("visibilitychange", function () {
 
 
 
+// Detecting PrintScreen key press for desktops
 document.addEventListener("keydown", function (e) {
     if (e.key === "PrintScreen") {
         const overlay = document.getElementById("overlay");
         overlay.style.display = "flex";
         setTimeout(() => {
             overlay.style.display = "none";
-        }, 2000); // Overlay akan hilang setelah 2 detik
-        navigator.clipboard.writeText(""); // Menghapus clipboard
+        }, 2000); // Overlay will disappear after 2 seconds
+        navigator.clipboard.writeText(""); // Clearing clipboard
     }
 });
 
 document.addEventListener("keyup", function (e) {
     if (e.key === "PrintScreen") {
-        navigator.clipboard.writeText(""); // Menghapus clipboard
+        navigator.clipboard.writeText(""); // Clearing clipboard
         alert("Screenshot tidak diizinkan!");
     }
 });
 
+// Detecting visibility change for mobile devices
 document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "flex";
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 2000); // Overlay will disappear after 2 seconds
         alert("Screenshot tidak diizinkan!");
-        // Anda bisa menyembunyikan konten di sini jika diperlukan
     }
+});
+
+// Detecting screenshot on mobile devices
+window.addEventListener('blur', function() {
+    setTimeout(() => {
+        if(document.hidden) {
+            const overlay = document.getElementById("overlay");
+            overlay.style.display = "flex";
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 2000); // Overlay will disappear after 2 seconds
+        }
+    }, 500);
 });
