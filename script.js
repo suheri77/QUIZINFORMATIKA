@@ -255,6 +255,18 @@ function authenticate() {
     }
 }
 
+function unlockWebsite() {
+    // Tambahkan kode untuk menghilangkan penguncian situs web
+    // Contoh:
+    document.body.classList.remove("locked");
+}
+
+// Panggil fungsi autentikasi saat dokumen dimuat
+document.addEventListener("DOMContentLoaded", function() {
+    authenticate();
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
     let isScreenshotAttempted = false;
 
