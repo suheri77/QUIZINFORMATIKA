@@ -265,6 +265,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             if (isScreenshotAttempted) {
                 alert('Screenshot detected!');
+                document.body.classList.remove('screenshot-detected');
+                isScreenshotAttempted = false;
             }
         }
     };
@@ -284,6 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove('screenshot-detected');
     });
 });
+
 
 
 
