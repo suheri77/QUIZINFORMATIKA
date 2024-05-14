@@ -266,17 +266,7 @@ document.addEventListener("DOMContentLoaded", function() {
     authenticate();
 });
 
-const nextBtn = document.querySelector('.next-btn');
 
-    // Event listener for answer button clicks
-    document.querySelector('.answers-container').addEventListener('click', (event) => {
-      if (event.target.classList.contains('ans-btn')) {
-        // Your validation logic here (check for at least one selected answer)
-        if (/* validation passes */) {
-          nextBtn.disabled = false; // Enable next button if validation passes
-        }
-      }
-    });
 
 
 
