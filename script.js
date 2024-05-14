@@ -275,46 +275,30 @@ document.addEventListener("visibilitychange", function () {
 
 
 
-// Detecting PrintScreen key press for desktops
-document.addEventListener("keydown", function (e) {
-    if (e.key === "PrintScreen") {
-        const overlay = document.getElementById("overlay");
-        overlay.style.display = "flex";
-        setTimeout(() => {
-            overlay.style.display = "none";
-        }, 2000); // Overlay will disappear after 2 seconds
-        navigator.clipboard.writeText(""); // Clearing clipboard
-    }
-});
-
 document.addEventListener("keyup", function (e) {
-    if (e.key === "PrintScreen") {
-        navigator.clipboard.writeText(""); // Clearing clipboard
-        alert("Screenshot tidak diizinkan!");
-    }
-});
+    var keyCode = e.keyCode ? e.keyCode : e.which;
+            if (keyCode == 44) {
+                stopPrntScr();
+            }
+        });
+function stopPrntScr() {
 
-// Detecting visibility change for mobile devices
-document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-        const overlay = document.getElementById("overlay");
-        overlay.style.display = "flex";
-        setTimeout(() => {
-            overlay.style.display = "none";
-        }, 2000); // Overlay will disappear after 2 seconds
-        alert("Screenshot tidak diizinkan!");
-    }
-});
-
-// Detecting screenshot on mobile devices
-window.addEventListener('blur', function() {
-    setTimeout(() => {
-        if(document.hidden) {
-            const overlay = document.getElementById("overlay");
-            overlay.style.display = "flex";
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 2000); // Overlay will disappear after 2 seconds
+            var inpFld = document.createElement("input");
+            inpFld.setAttribute("value", ".");
+            inpFld.setAttribute("width", "0");
+            inpFld.style.height = "0px";
+            inpFld.style.width = "0px";
+            inpFld.style.border = "0px";
+            document.body.appendChild(inpFld);
+            inpFld.select();
+            document.execCommand("copy");
+            inpFld.remove(inpFld);
         }
-    }, 500);
-});
+       function AccessClipboardData() {
+            try {
+                window.clipboardData.setData('text', "Access   Restricted");
+            } catch (err) {
+            }
+        }
+        setInterval("AccessClipboardData()", 300);
+
