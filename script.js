@@ -266,3 +266,36 @@ document.addEventListener("DOMContentLoaded", function() {
     authenticate();
 });
 
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        alert("Screenshot tidak diizinkan!");
+        // Anda bisa menyembunyikan konten di sini jika diperlukan
+    }
+});
+
+
+
+document.addEventListener("keydown", function (e) {
+    if (e.key === "PrintScreen") {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "flex";
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 2000); // Overlay akan hilang setelah 2 detik
+        navigator.clipboard.writeText(""); // Menghapus clipboard
+    }
+});
+
+document.addEventListener("keyup", function (e) {
+    if (e.key === "PrintScreen") {
+        navigator.clipboard.writeText(""); // Menghapus clipboard
+        alert("Screenshot tidak diizinkan!");
+    }
+});
+
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        alert("Screenshot tidak diizinkan!");
+        // Anda bisa menyembunyikan konten di sini jika diperlukan
+    }
+});
