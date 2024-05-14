@@ -266,35 +266,17 @@ document.addEventListener("DOMContentLoaded", function() {
     authenticate();
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    let isScreenshotAttempted = false;
+const nextBtn = document.querySelector('.next-btn');
 
-    const handleVisibilityChange = () => {
-        if (document.hidden) {
-            isScreenshotAttempted = true;
-            document.body.classList.add('screenshot-detected');
-        } else {
-            if (isScreenshotAttempted) {
-                alert('Screenshot detected!');
-            }
+    // Event listener for answer button clicks
+    document.querySelector('.answers-container').addEventListener('click', (event) => {
+      if (event.target.classList.contains('ans-btn')) {
+        // Your validation logic here (check for at least one selected answer)
+        if (/* validation passes */) {
+          nextBtn.disabled = false; // Enable next button if validation passes
         }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    window.addEventListener('blur', () => {
-        setTimeout(() => {
-            if (!document.hasFocus()) {
-                isScreenshotAttempted = true;
-                document.body.classList.add('screenshot-detected');
-            }
-        }, 100);
+      }
     });
-
-    window.addEventListener('focus', () => {
-        document.body.classList.remove('screenshot-detected');
-    });
-});
 
 
 
