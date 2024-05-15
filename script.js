@@ -213,7 +213,7 @@ function resetContainer() {
 
 // Passwords list
 const passwords = [
-    { first: "s", second: "5" },
+    { first: "s", second: "54" },
     { first: "m", second: "10" },
     { first: "d", second: "15" },
     // Add more passwords as needed
