@@ -121,13 +121,6 @@ let userScore = 0;
 let restartAttempts = 0;
 const maxRestarts = 3;
 
-let firstPassword = generateRandomPassword();
-let secondPassword = generateRandomPassword();
-let singlePassword = generateRandomPassword();
-
-console.log("First Password:", firstPassword); // Display the first password in the console
-console.log("Second Password:", secondPassword); // Display the second password in the console
-
 const startButtonEl = document.querySelector(".start-btn");
 const welcomeScreenEl = document.querySelector(".welcome-screen");
 const quizScreenEl = document.querySelector(".quiz-screen");
@@ -148,7 +141,7 @@ function startQuiz() {
         displayQuestion();
     } else {
         alert("You have reached the maximum number of restarts. Please re-authenticate.");
-        authenticateSinglePassword();
+        authenticateNewPassword();
     }
 }
 
@@ -218,8 +211,17 @@ function resetContainer() {
     answersButtons.innerHTML = "";
 }
 
-function generateRandomPassword() {
-    return Math.random().toString(36).slice(-8);
+// Passwords list
+const passwords = [
+    { first: "s", second: "5" },
+    { first: "m", second: "10" },
+    { first: "d", second: "15" },
+    // Add more passwords as needed
+];
+
+function getRandomPasswordSet() {
+    const randomIndex = Math.floor(Math.random() * passwords.length);
+    return passwords[randomIndex];
 }
 
 function authenticate() {
@@ -227,6 +229,7 @@ function authenticate() {
     const delayTime = 3000;
     let firstPasswordEntered = false;
     let secondPasswordEntered = false;
+    const { first: firstPassword, second: secondPassword } = getRandomPasswordSet();
 
     while (passwordAttempts > 0) {
         if (!firstPasswordEntered) {
@@ -266,24 +269,72 @@ function authenticate() {
     }
 }
 
-function authenticateSinglePassword() {
+function authenticateNewPassword() {
     let passwordAttempts = 3;
     const delayTime = 3000;
+    let firstPasswordEntered = false;
+    let secondPasswordEntered = false;
+    let thirdPasswordEntered = false;
+
+    const newPasswords = [
+        { 
+        first: "newPassword1", 
+        second: "newPassword2", 
+        third: "newPassword3" },
+        // Add more password sets as needed
+    ];
+
+    const { first: firstPassword, second: secondPassword, third: thirdPassword } = newPasswords[0];
 
     while (passwordAttempts > 0) {
-        const inputPassword = prompt("Masukkan kata sandi baru:");
+        if (!firstPasswordEntered) {
+            const inputPassword = prompt("Masukkan kata sandi baru pertama:");
 
-        if (inputPassword === singlePassword) {
-            unlockWebsite();
-            return;
-        } else {
-            passwordAttempts--;
-            alert("Kata sandi salah. Sisa percobaan: " + passwordAttempts);
+            if (inputPassword === firstPassword) {
+                firstPasswordEntered = true;
+                alert("Kata sandi pertama benar. Masukkan kata sandi kedua.");
+            } else {
+                passwordAttempts--;
+                alert("Kata sandi pertama salah. Sisa percobaan: " + passwordAttempts);
 
-            if (passwordAttempts === 0) {
-                alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
-                setTimeout(authenticateSinglePassword, delayTime);
+                if (passwordAttempts === 0) {
+                    alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
+                    setTimeout(authenticateNewPassword, delayTime);
+                    return;
+                }
+            }
+        } else if (!secondPasswordEntered) {
+            const inputPassword = prompt("Masukkan kata sandi baru kedua:");
+
+            if (inputPassword === secondPassword) {
+                secondPasswordEntered = true;
+                alert("Kata sandi kedua benar. Masukkan kata sandi ketiga.");
+            } else {
+                passwordAttempts--;
+                alert("Kata sandi kedua salah. Sisa percobaan: " + passwordAttempts);
+
+                if (passwordAttempts === 0) {
+                    alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
+                    setTimeout(authenticateNewPassword, delayTime);
+                    return;
+                }
+            }
+        } else if (!thirdPasswordEntered) {
+            const inputPassword = prompt("Masukkan kata sandi baru ketiga:");
+
+            if (inputPassword === thirdPassword) {
+                thirdPasswordEntered = true;
+                unlockWebsite();
                 return;
+            } else {
+                passwordAttempts--;
+                alert("Kata sandi ketiga salah. Sisa percobaan: " + passwordAttempts);
+
+                if (passwordAttempts === 0) {
+                    alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
+                    setTimeout(authenticateNewPassword, delayTime);
+                    return;
+                }
             }
         }
     }
@@ -292,12 +343,6 @@ function authenticateSinglePassword() {
 function unlockWebsite() {
     document.body.classList.remove("locked");
     restartAttempts = 0;
-    firstPassword = generateRandomPassword();
-    secondPassword = generateRandomPassword();
-    singlePassword = generateRandomPassword();
-    console.log("First Password:", firstPassword); // Display the first password in the console
-    console.log("Second Password:", secondPassword); // Display the second password in the console
-    console.log("Single Password:", singlePassword);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
