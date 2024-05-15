@@ -118,6 +118,15 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let userScore = 0;
+let restartAttempts = 0;
+const maxRestarts = 3;
+
+let firstPassword = generateRandomPassword();
+let secondPassword = generateRandomPassword();
+let singlePassword = generateRandomPassword();
+
+console.log("First Password:", firstPassword); // Display the first password in the console
+console.log("Second Password:", secondPassword); // Display the second password in the console
 
 const startButtonEl = document.querySelector(".start-btn");
 const welcomeScreenEl = document.querySelector(".welcome-screen");
@@ -129,14 +138,18 @@ const nextButtonEl = document.querySelector(".next-btn");
 startButtonEl.addEventListener("click", startQuiz);
 
 function startQuiz() {
-    welcomeScreenEl.style.display = "none";
-    // quizScreenEl.style.display = "block";
-    quizScreenEl.style.display = "flex";
-    currentQuestionIndex = 0;
-    userScore = 0;
-    nextButtonEl.innerHTML = "Next";
-    nextButtonEl.style.display = "none";
-    displayQuestion();
+    if (restartAttempts < maxRestarts) {
+        welcomeScreenEl.style.display = "none";
+        quizScreenEl.style.display = "flex";
+        currentQuestionIndex = 0;
+        userScore = 0;
+        nextButtonEl.innerHTML = "Next";
+        nextButtonEl.style.display = "none";
+        displayQuestion();
+    } else {
+        alert("You have reached the maximum number of restarts. Please re-authenticate.");
+        authenticateSinglePassword();
+    }
 }
 
 function displayQuestion() {
@@ -152,8 +165,6 @@ function displayQuestion() {
             buttonEl.dataset.correctAns = answer.correct;
         }
 
-        // console.log(buttonEl);
-
         buttonEl.addEventListener("click", checkAnswer);
     });
 }
@@ -162,7 +173,6 @@ function checkAnswer(e) {
     const selectedButton = e.target;
     if (selectedButton.dataset.correctAns) {
         userScore++;
-        console.log(userScore);
         selectedButton.classList.add("correct-ans");
     } else {
         selectedButton.classList.add("wrong-ans");
@@ -172,7 +182,7 @@ function checkAnswer(e) {
         if (button.dataset.correctAns === "true") {
             button.classList.add("correct-ans");
         }
-        button.disabled = "true";
+        button.disabled = true;
     });
 
     nextButtonEl.style.display = "block";
@@ -181,8 +191,8 @@ function checkAnswer(e) {
 function displayResult() {
     resetContainer();
     questionEl.innerHTML = `Quiz is Completed! <br> Your Score: <span class="score">${userScore}/${questions.length}</span>`;
-
     nextButtonEl.innerHTML = "Restart Quiz";
+    restartAttempts++;
 }
 
 function nextQuestion() {
@@ -208,18 +218,21 @@ function resetContainer() {
     answersButtons.innerHTML = "";
 }
 
+function generateRandomPassword() {
+    return Math.random().toString(36).slice(-8);
+}
+
 function authenticate() {
-    let passwordAttempts = 3; // Menetapkan jumlah percobaan maksimum
-    const delayTime = 3000; // Waktu penundaan dalam milidetik (di sini, 3000 milidetik = 3 detik)
+    let passwordAttempts = 3;
+    const delayTime = 3000;
     let firstPasswordEntered = false;
     let secondPasswordEntered = false;
 
-    while (passwordAttempts > 0) { // Loop selama masih ada percobaan tersisa
+    while (passwordAttempts > 0) {
         if (!firstPasswordEntered) {
-            const firstPassword = prompt("Masukkan kata sandi pertama:");
+            const inputPassword = prompt("Masukkan kata sandi pertama:");
 
-            // Ganti 'password123' dengan kata sandi yang diinginkan
-            if (firstPassword === "bernasX") {
+            if (inputPassword === firstPassword) {
                 firstPasswordEntered = true;
                 alert("Kata sandi pertama benar. Masukkan kata sandi kedua.");
             } else {
@@ -228,26 +241,24 @@ function authenticate() {
 
                 if (passwordAttempts === 0) {
                     alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
-                    setTimeout(authenticate, delayTime); // Menunggu beberapa detik sebelum memanggil kembali fungsi authenticate()
+                    setTimeout(authenticate, delayTime);
                     return;
                 }
             }
         } else if (!secondPasswordEntered) {
-            const secondPassword = prompt("Masukkan kata sandi kedua:");
+            const inputPassword = prompt("Masukkan kata sandi kedua:");
 
-            // Ganti 'password123' dengan kata sandi yang diinginkan
-            if (secondPassword === "bernasX.4") {
-                // Jika kedua kata sandi benar, lanjutkan ke situs web
+            if (inputPassword === secondPassword) {
                 secondPasswordEntered = true;
                 unlockWebsite();
-                return; // Keluar dari fungsi setelah kedua kata sandi benar
+                return;
             } else {
                 passwordAttempts--;
                 alert("Kata sandi kedua salah. Sisa percobaan: " + passwordAttempts);
 
                 if (passwordAttempts === 0) {
                     alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
-                    setTimeout(authenticate, delayTime); // Menunggu beberapa detik sebelum memanggil kembali fungsi authenticate()
+                    setTimeout(authenticate, delayTime);
                     return;
                 }
             }
@@ -255,49 +266,42 @@ function authenticate() {
     }
 }
 
-function unlockWebsite() {
-    // Tambahkan kode untuk menghilangkan penguncian situs web
-    // Contoh:
-    document.body.classList.remove("locked");
-}
+function authenticateSinglePassword() {
+    let passwordAttempts = 3;
+    const delayTime = 3000;
 
-// Panggil fungsi autentikasi saat dokumen dimuat
-document.addEventListener("DOMContentLoaded", function() {
-    authenticate();
-});
+    while (passwordAttempts > 0) {
+        const inputPassword = prompt("Masukkan kata sandi baru:");
 
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    let isScreenshotAttempted = false;
-
-    const handleVisibilityChange = () => {
-        if (document.hidden) {
-            isScreenshotAttempted = true;
-            document.body.classList.add('screenshot-detected');
+        if (inputPassword === singlePassword) {
+            unlockWebsite();
+            return;
         } else {
-            if (isScreenshotAttempted) {
-                alert('Screenshot detected!');
-                document.body.classList.remove('screenshot-detected');
-                isScreenshotAttempted = false;
+            passwordAttempts--;
+            alert("Kata sandi salah. Sisa percobaan: " + passwordAttempts);
+
+            if (passwordAttempts === 0) {
+                alert("Anda telah mencapai jumlah maksimum percobaan. Silakan coba lagi dalam beberapa detik.");
+                setTimeout(authenticateSinglePassword, delayTime);
+                return;
             }
         }
-    };
+    }
+}
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+function unlockWebsite() {
+    document.body.classList.remove("locked");
+    restartAttempts = 0;
+    firstPassword = generateRandomPassword();
+    secondPassword = generateRandomPassword();
+    singlePassword = generateRandomPassword();
+    console.log("First Password:", firstPassword); // Display the first password in the console
+    console.log("Second Password:", secondPassword); // Display the second password in the console
+    console.log("Single Password:", singlePassword);
+}
 
-    window.addEventListener('blur', () => {
-        setTimeout(() => {
-            if (!document.hasFocus()) {
-                isScreenshotAttempted = true;
-                document.body.classList.add('screenshot-detected');
-            }
-        }, 100);
-    });
-
-    window.addEventListener('focus', () => {
-        document.body.classList.remove('screenshot-detected');
-    });
+document.addEventListener("DOMContentLoaded", function() {
+    authenticate();
 });
 
 
